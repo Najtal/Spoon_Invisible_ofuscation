@@ -1,8 +1,6 @@
 package ihm;
 
-import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
+import controller.Initialisation;
 
 public class Controller {
 
@@ -12,11 +10,11 @@ public class Controller {
 		this.model = model;
 	}
 
-	public static void actionProceed() {
-		// TODO Appele le reste du programme
+	public void actionProceed() {
+		new Initialisation(model.getSourceDir(), model.getDestDir());
 	}
 
-	public static void actionCancel() {
+	public void actionCancel() {
 		System.exit(0);
 	}
 	

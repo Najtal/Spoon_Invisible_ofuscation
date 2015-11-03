@@ -14,17 +14,14 @@ public class Model {
 		this.controller = new Controller(this);
 		this.view = new View(this, controller);
 	}
-	
-	
+		
 	public String getDestDir() {
 		return destDir;
 	}
 
-
 	public String getSourceDir() {
 		return sourceDir;
 	}
-
 
 	public void setDestDir(String text) {
 		this.destDir = text;
