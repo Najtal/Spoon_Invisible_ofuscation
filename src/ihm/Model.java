@@ -6,6 +6,7 @@ public class Model {
 	private View view;
 	private String destDir;
 	private String sourceDir;
+	private String modelDir;
 
 	/**
 	 * Constructeur
@@ -14,7 +15,12 @@ public class Model {
 		this.controller = new Controller(this);
 		this.view = new View(this, controller);
 	}
-		
+	
+	
+	/*
+	 * GETTERS
+	 */
+	
 	public String getDestDir() {
 		return destDir;
 	}
@@ -22,13 +28,26 @@ public class Model {
 	public String getSourceDir() {
 		return sourceDir;
 	}
+	
+	public String getModelDir() {
+		return modelDir;
+	}
 
+	
+	/*
+	 * SETTERS
+	 */
+	
 	public void setDestDir(String text) {
 		this.destDir = text;
 	}
 
 	public void setSourceDir(String text) {
 		this.sourceDir = text;
+	}
+
+	public void setModelDir(String text) {
+		this.modelDir = text;
 	}
 
 }

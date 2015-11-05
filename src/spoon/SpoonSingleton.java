@@ -2,13 +2,19 @@ package spoon;
 
 public class SpoonSingleton {
 
-	private static Launcher spoonLauncher;
+	private static Launcher spoonEditorLauncher;
+	private static Launcher spoonModelReaderLauncher;
 
 	{
-		 this.spoonLauncher = new spoon.Launcher();
+		 SpoonSingleton.spoonEditorLauncher = new spoon.Launcher();
+		 SpoonSingleton.spoonModelReaderLauncher = new spoon.Launcher();
 	}
 	
-	public static Launcher getSpoonLauncher() {
-		return spoonLauncher;
+	public static Launcher getSpoonEditorLauncher() {
+		return spoonEditorLauncher;
+	}
+	
+	public static Launcher getSpoonModelReaderLauncher() {
+		return spoonModelReaderLauncher;
 	}
 }

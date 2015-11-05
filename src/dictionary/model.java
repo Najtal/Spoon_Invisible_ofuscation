@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Model {
 
-	private ArrayList<ModelPackages> model;
+	private ArrayList<BOMPackages> model;
 	protected int nbPackage;
 	protected int nbClass;
 	protected int nbAttribute;
@@ -24,14 +24,14 @@ public class Model {
 		this.nbPackage = 0;	
 	}
 	
-	public ModelPackages addPackage(String name) {
-		ModelPackages np = new ModelPackages(this, name);
+	public BOMPackages addPackage(String name) {
+		BOMPackages np = new BOMPackages(this, null, name);
 		this.model.add(np);
 		this.nbPackage++;
 		return np;
 	}
 	
-	public ArrayList<ModelPackages> getModel() {
+	public ArrayList<BOMPackages> getModel() {
 		return model;
 	}
 

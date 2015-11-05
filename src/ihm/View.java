@@ -25,14 +25,18 @@ public class View extends JFrame implements ActionListener{
 	private Controller controller;
 	
 	private JPanel jpSource;
-	private JLabel jlTitreSource;
 	private JTextField jtfSource;
+	
+	private JPanel jpModel;
+	private JTextField jtfModel;
+	
 	private JPanel jpDest;
-	private JLabel jlTitreDest;
 	private JTextField jtfDest;
+	
 	private JPanel jpAction;
 	private JButton jbProceed;
 	private JButton jbCancel;
+
 	
 	public View(Model model, Controller controller) {
 	
@@ -49,6 +53,7 @@ public class View extends JFrame implements ActionListener{
 		this.setLayout(fl);
 		
 		this.add(setSourceJP());
+		this.add(setModelJP());
 		this.add(setDestinationJP());
 		this.add(setActionJP());
 		
@@ -58,8 +63,11 @@ public class View extends JFrame implements ActionListener{
 	}
 
 
+	/**
+	 * Génère le JPANEL de référencement du répertoire du projet source, celui a éditer
+	 * @return jpanel source
+	 */
 	private JPanel setSourceJP() {
-		
 		jpSource = new JPanel();
 		jtfSource = new JTextField("Repertoire du projet source");
 		
@@ -70,8 +78,30 @@ public class View extends JFrame implements ActionListener{
 		
 		return jpSource;
 	}
-	
 
+	/**
+	 * Génère le JPANEL de référencement du répertoire du projet source, celui a éditer
+	 * @return jpanel source
+	 */
+	private JPanel setModelJP() {
+		jpModel = new JPanel();
+		jtfModel = new JTextField("Repertoire du projet modèle");
+		
+		jpModel.setLayout(new BorderLayout());
+		jpModel.add(jtfModel, BorderLayout.SOUTH);
+		
+		jpModel.setPreferredSize(new Dimension(sizeW, 50));
+		
+		return jpModel;
+	}
+	
+	
+	
+		
+	/**
+	 * Génère le JPANEL de référencement du répertoire de destination du projet.
+	 * @return
+	 */
 	private JPanel setDestinationJP() {
 		jpDest = new JPanel();
 		jtfDest = new JTextField("Repertoire du projet de destination");
@@ -84,6 +114,11 @@ public class View extends JFrame implements ActionListener{
 		return jpDest;
 	}
 
+	
+	/**
+	 * Enregistrement des listeners 
+	 * @return
+	 */
 	private JPanel setActionJP() {
 
 		jpAction = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 50));
@@ -96,24 +131,24 @@ public class View extends JFrame implements ActionListener{
 		jpAction.add(jbProceed);
 		jpAction.add(jbCancel);
 		
-		
 		return jpAction;
 	}
 
-
+	/**
+	 * Gestion des actions des listeners
+	 */
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		
 		if (ae.getSource() == this.jbProceed) {
-			
 			model.setSourceDir(jtfSource.getText());
 			model.setDestDir(jtfDest.getText());
-			
-			Controller.actionProceed();
+			model.setModelDir(jtfModel.getText());
+			controller.actionProceed();
+
 		} else if (ae.getSource() == this.jbCancel) {
-			Controller.actionCancel();
+			controller.actionCancel();
 		}
-		
 	}
 	
 }

@@ -1,6 +1,6 @@
 package dictionary;
 
-public class MedelComment {
+public class BOMComment {
 
 	
 	

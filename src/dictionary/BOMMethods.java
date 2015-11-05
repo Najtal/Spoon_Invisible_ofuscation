@@ -1,12 +1,12 @@
 package dictionary;
 
-public class ModelMethods {
+public class BOMMethods {
 
 	private String name;
 	private Model model;
-	private ModelClass parent;
+	private BOMClass parent;
 
-	public ModelMethods(Model model, ModelClass parent, String name) {
+	public BOMMethods(Model model, BOMClass parent, String name) {
 		this.model = model;
 		this.parent = parent;
 		this.name = name;

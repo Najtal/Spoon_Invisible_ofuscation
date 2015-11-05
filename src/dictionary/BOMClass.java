@@ -2,21 +2,21 @@ package dictionary;
 
 import java.util.ArrayList;
 
-public class ModelClass {
+public class BOMClass {
 
 	private Model model;
-	private ModelPackages parent;
+	private BOMPackages parent;
 	private String name;
-	private ArrayList<ModelMethods> methodes;
-	private ArrayList<ModelConstant> constants;
-	private ArrayList<ModelAttribute> attributes;
+	private ArrayList<BOMMethods> methodes;
+	private ArrayList<BOMConstant> constants;
+	private ArrayList<BOMAttribute> attributes;
 	protected int nbAttribute;
 	protected int nbComments;
 	protected int nbConstant;
 	protected int nbMethods;
 	
 	
-	public ModelClass(Model model, ModelPackages parent, String name) {
+	public BOMClass(Model model, BOMPackages parent, String name) {
 		this.methodes = new ArrayList<>();
 		this.constants = new ArrayList<>();
 		this.attributes = new ArrayList<>();
@@ -32,8 +32,8 @@ public class ModelClass {
 	}
 	
 	
-	public ModelMethods addMethod(String name) {
-		ModelMethods nc = new ModelMethods(model, this, name);
+	public BOMMethods addMethod(String name) {
+		BOMMethods nc = new BOMMethods(model, this, name);
 		this.methodes.add(nc);
 		model.nbMethods++;
 		parent.nbMethods++;
@@ -41,8 +41,8 @@ public class ModelClass {
 		return nc;
 	}
 
-	public ModelConstant addConstant(String name) {
-		ModelConstant nc = new ModelConstant(model, this, name);
+	public BOMConstant addConstant(String name) {
+		BOMConstant nc = new BOMConstant(model, this, name);
 		this.constants.add(nc);
 		model.nbConstant++;
 		parent.nbConstant++;
@@ -50,8 +50,8 @@ public class ModelClass {
 		return nc;
 	}
 	
-	public ModelAttribute addAttribute(String name) {
-		ModelAttribute nc = new ModelAttribute(model, this, name);
+	public BOMAttribute addAttribute(String name) {
+		BOMAttribute nc = new BOMAttribute(model, this, name);
 		this.attributes.add(nc);
 		model.nbAttribute++;
 		parent.nbAttribute++;
@@ -60,17 +60,17 @@ public class ModelClass {
 	}
 
 
-	public ArrayList<ModelMethods> getMethodes() {
+	public ArrayList<BOMMethods> getMethodes() {
 		return methodes;
 	}
 
 
-	public ArrayList<ModelAttribute> getAttributes() {
+	public ArrayList<BOMAttribute> getAttributes() {
 		return attributes;
 	}
 
 
-	public ArrayList<ModelConstant> getConstants() {
+	public ArrayList<BOMConstant> getConstants() {
 		return constants;
 	}
 	

@@ -1,12 +1,12 @@
 package dictionary;
 
-public class ModelConstant {
+public class BOMAttribute {
 
 	private Model model;
-	private ModelClass parent;
+	private BOMClass parent;
 	private String name;
 
-	public ModelConstant(Model model, ModelClass parent, String name) {
+	public BOMAttribute(Model model, BOMClass parent, String name) {
 		this.model = model;
 		this.parent = parent;
 		this.name = name;	}

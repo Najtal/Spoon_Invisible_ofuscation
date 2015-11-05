@@ -11,7 +11,9 @@ public class Controller {
 	}
 
 	public void actionProceed() {
-		new Initialisation(model.getSourceDir(), model.getDestDir());
+		new Initialisation(model.getSourceDir(),
+				model.getModelDir(),
+				model.getDestDir());
 	}
 
 	public void actionCancel() {
