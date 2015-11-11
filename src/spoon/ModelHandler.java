@@ -55,6 +55,11 @@ public class ModelHandler {
 				// TODO Pour chaque type d'éléments, appeler la classe associée
 				// Je ne trouve pas comment faire pour déterminer le type de chaque élément :/
 				// Sans doute avec les annotations.
+				
+				// Solution du prof
+				//packages.getElements(new TypeFilter<>(CtType.class));
+				
+				//packages.getElements(arg0)(arg0)
 			
 			}
 			
