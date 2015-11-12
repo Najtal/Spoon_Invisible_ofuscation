@@ -1,6 +1,8 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import dictionary.Model;
 import spoon.Launcher;
@@ -36,11 +38,11 @@ public class Initialisation {
 		spoonReader.addInputResource(inputDir);
 
 		// Lecture effective du modèle
-		readModelProjectToModel();
+		// TODO readModelProjectToModel();
 		
 		// Initialisation de l'instance spoon permettant d'éditer le projet à affeccter		
 		this.spoonEditor = SpoonSingleton.getSpoonEditorLauncher();
-		spoonEditor.addInputResource(inputDir);
+		spoonEditor.addInputResource(modelDir);
 		spoonEditor.setOutputDirectory(outputDir);
 		
 		// Application effective du modèle sur le projet cible
@@ -55,12 +57,38 @@ public class Initialisation {
 	}
 
 	private void initProcessors() {
+		
+		spoonReader.buildModel();
+		// On ajoute tous les packages
+		ArrayList<CtPackage> ctpl = new ArrayList<>();
+		for (CtPackage ctpR : spoonReader.getFactory().Package().getAll()) {
+			ctpl.add(ctpR);
+		}
+		
+		
+		spoonEditor.buildModel();
+		List<CtPackage> lPackages = (List<CtPackage>) spoonEditor.getFactory().Package().getAll();
+		for (int i=0 ; i<lPackages.size() ; i++) {
+			CtPackage x = spoonEditor.getFactory().Package().get(lPackages.get(i).getQualifiedName());
+			
+			System.out.println("Quallified name : " + x.getQualifiedName());
+			System.out.println("Simple name : " + x.getSimpleName());
+			
+			x.setSimpleName(ctpl.get(i).getSimpleName());
+		}
+		
 		// TODO Auto-generated method stub
 		
 	}
 
 	private void Process() {
-		spoonReader.run();
+		
+		spoonEditor.addProcessor("np");
+		spoonEditor.process();
+		spoonEditor.prettyprint();
+		
+		//spoonEditor.createCompiler().compile();
+		//spoonReader.run();
 	}
 	
 }

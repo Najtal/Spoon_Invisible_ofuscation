@@ -48,5 +48,51 @@ public class BOMPackages {
 		model.nbPackage++;
 		return np;
 	}
+
+	public BOMPackages getParent() {
+		return parent;
+	}
+
+	public Model getModel() {
+		return model;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public ArrayList<BOMClass> getClasses() {
+		return classes;
+	}
+
+	public ArrayList<BOMPackages> getPackages() {
+		return packages;
+	}
+
+	public int getNbAttribute() {
+		return nbAttribute;
+	}
+
+	public int getNbPackages() {
+		return nbPackages;
+	}
+
+	public int getNbClass() {
+		return nbClass;
+	}
+
+	public int getNbComments() {
+		return nbComments;
+	}
+
+	public int getNbConstant() {
+		return nbConstant;
+	}
+
+	public int getNbMethods() {
+		return nbMethods;
+	}
+	
+	
 	
 }

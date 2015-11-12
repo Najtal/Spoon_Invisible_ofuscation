@@ -5,7 +5,7 @@ public class SpoonSingleton {
 	private static Launcher spoonEditorLauncher;
 	private static Launcher spoonModelReaderLauncher;
 
-	{
+	static {
 		 SpoonSingleton.spoonEditorLauncher = new spoon.Launcher();
 		 SpoonSingleton.spoonModelReaderLauncher = new spoon.Launcher();
 	}

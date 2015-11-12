@@ -16,6 +16,12 @@ public class Model {
 		this.view = new View(this, controller);
 	}
 	
+	public Model(String sourceDir, String modelDir, String destDir) {
+		setDestDir(destDir);
+		setSourceDir(sourceDir);
+		setModelDir(modelDir);
+	}
+	
 	
 	/*
 	 * GETTERS
