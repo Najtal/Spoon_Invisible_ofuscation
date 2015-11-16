@@ -21,9 +21,10 @@ public class NameMethodProcessor extends AbstractProcessor<CtType> {
 	public void process(CtType element) {
 
 		System.out.println("-_-_-_- CHANGE METHODS OF " + element.getSimpleName() +" -_-_-_-");
-		NameProvider nameProvider = new MethodNameProvider(getFactory(), element);
 
+		NameProvider nameProvider = new MethodNameProvider(getFactory(), element);
 		Set<CtMethod> methods = element.getMethods();
+		
 		for (CtMethod method : methods) {
 
 			// Don't touch to the mains methods
