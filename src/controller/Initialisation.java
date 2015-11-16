@@ -5,10 +5,12 @@ import java.util.Collection;
 import java.util.List;
 
 import dictionary.Model;
+import processor.NameMethodProcessor;
 import spoon.Launcher;
 import spoon.ModelHandler;
 import spoon.SpoonSingleton;
 import spoon.reflect.declaration.CtPackage;
+import util.FactoryReference;
 
 public class Initialisation {
 
@@ -38,17 +40,24 @@ public class Initialisation {
 		spoonReader.addInputResource(inputDir);
 
 		// Lecture effective du modèle
-		// TODO readModelProjectToModel();
+		readModelProjectToModel();
 		
 		// Initialisation de l'instance spoon permettant d'éditer le projet à affeccter		
 		this.spoonEditor = SpoonSingleton.getSpoonEditorLauncher();
 		spoonEditor.addInputResource(modelDir);
 		spoonEditor.setOutputDirectory(outputDir);
 		
+		 
+    	// Définition des processeurs
+		NameMethodProcessor nmp = new NameMethodProcessor();
+    	
+    	// Association des process a spoon
+		spoonEditor.addProcessor(nmp);
+
 		// Application effective du modèle sur le projet cible
 		initProcessors();
 		Process();
-		
+	
 	}
 
 
@@ -89,13 +98,13 @@ public class Initialisation {
 	}
 	
 	private void processMethodes() {
-		 // TODO
+		// TODO
 	}
 
 	private void Process() {
 		
-		spoonEditor.addProcessor("np");
-		spoonEditor.process();
+		//spoonEditor.process();
+		spoonEditor.run();
 		spoonEditor.prettyprint();
 		
 		//spoonEditor.createCompiler().compile();
