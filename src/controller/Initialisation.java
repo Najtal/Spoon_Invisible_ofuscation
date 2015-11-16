@@ -58,6 +58,17 @@ public class Initialisation {
 
 	private void initProcessors() {
 		
+		processPackages();
+		
+		processClasses();
+		
+		processMethodes();
+		
+	}
+	
+	
+	private void processPackages() {
+
 		spoonReader.buildModel();
 		// On ajoute tous les packages
 		ArrayList<CtPackage> ctpl = new ArrayList<>();
@@ -65,20 +76,20 @@ public class Initialisation {
 			ctpl.add(ctpR);
 		}
 		
-		
 		spoonEditor.buildModel();
 		List<CtPackage> lPackages = (List<CtPackage>) spoonEditor.getFactory().Package().getAll();
 		for (int i=0 ; i<lPackages.size() ; i++) {
 			CtPackage x = spoonEditor.getFactory().Package().get(lPackages.get(i).getQualifiedName());
-			
-			System.out.println("Quallified name : " + x.getQualifiedName());
-			System.out.println("Simple name : " + x.getSimpleName());
-			
 			x.setSimpleName(ctpl.get(i).getSimpleName());
 		}
-		
-		// TODO Auto-generated method stub
-		
+	}
+	
+	private void processClasses() {
+		// TODO
+	}
+	
+	private void processMethodes() {
+		 // TODO
 	}
 
 	private void Process() {
