@@ -81,6 +81,7 @@ public class ModelHandler {
 			BOMClass newBomClass = mParent.addClass(eClass.getSimpleName());
 			introPackages(false, bomp, pack);
 
+			CtElement spoonPackage = null;
 			// On parcours tous ses elements
 			List<CtElement> packageElements = spoonPackage.getElements(null);
 			for (CtElement element : packageElements) {
@@ -89,11 +90,20 @@ public class ModelHandler {
 				// Je ne trouve pas comment faire pour determiner le type de chaque element :/
 				// Sans doute avec les annotations.
 				
+				
 				// Solution du prof
 				//packages.getElements(new TypeFilter<>(CtType.class));
-				
 				//packages.getElements(arg0)(arg0)
-			
+				
+				// list all classes of the model
+//				for(CtType<?> s : factory.Class().getAll()) {
+//				}
+				
+				// Get all classes
+//				  List<CtClass> classes = getFactory().Package().getRootPackage().getElements(new TypeFilter(CtClass.class));
+//				  for(CtClass cls: classes){
+//						  			  			  
+//				  }    
 			}
 			
 		}
@@ -101,7 +111,7 @@ public class ModelHandler {
 	
 	
 	private void introClasses(BOMPackages bomPackage, CtPackage spoonPackage) {
-
+		
 	}
 	
 	private void introAttributes() {
