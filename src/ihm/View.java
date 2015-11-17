@@ -2,22 +2,27 @@ package ihm;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.sound.midi.ControllerEventListener;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * 
+ * @author jvdur
+ *
+ */
 public class View extends JFrame implements ActionListener{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static final int sizeH = 300;
 	private static final int sizeW = 400;
 

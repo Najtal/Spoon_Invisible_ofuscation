@@ -2,6 +2,11 @@ package ihm;
 
 import controller.Initialisation;
 
+/**
+ * 
+ * @author jvdur
+ *
+ */
 public class Controller {
 
 	private Model model;

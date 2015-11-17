@@ -1,5 +1,10 @@
 package ihm;
 
+/**
+ * 
+ * @author jvdur
+ *
+ */
 public class Model {
 
 	private Controller controller;

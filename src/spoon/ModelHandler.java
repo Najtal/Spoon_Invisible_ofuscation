@@ -92,6 +92,11 @@ public class ModelHandler {
 
 	}
 
+	/**
+	 * analyse le contenu des Classes du projet source et l'ajoute dans le modèle
+	 * @param bomPackage package de la classe dans le modèle
+	 * @param sPackage Le package a analyser dans le projet source
+	 */
 	private void introClasses(BOMPackages bomPackage, CtPackage sPackage) {
 
 		List<CtClass> lClass = sPackage.getElements(new TypeFilter<>(CtType.class));

@@ -1,22 +1,13 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import dictionary.Model;
 import processor.ProcessorCtTypeName;
 import processor.ProcessorPackageName;
 import spoon.Launcher;
 import spoon.ModelHandler;
 import spoon.SpoonSingleton;
-import spoon.reflect.declaration.CtPackage;
-import spoon.reflect.declaration.CtType;
 
 public class Initialisation {
-
-	private String inputDir;
-	private String modelDir;
-	private String outputDir;
 
 	private static Model model;
 	
@@ -30,10 +21,6 @@ public class Initialisation {
 	 * @param outputDir le répertoire du projet a générer
 	 */
 	public Initialisation(String inputDir, String modelDir, String outputDir) {		
-		// Paramètres relatifs aux dossiers des projets
-		this.inputDir = inputDir;
-		this.modelDir = modelDir;
-		this.outputDir = outputDir;
 		
 		// Initialisation de l'instance spoon permettant de lire le modèle
 		this.spoonReader = SpoonSingleton.getSpoonModelReaderLauncher();
@@ -69,6 +56,7 @@ public class Initialisation {
 	private void Process() {
 		spoonEditor.process();
 		spoonEditor.run();
+		System.out.println("Terminated");
 	}
 	
 	public static Model getModel() {

@@ -4,6 +4,11 @@ import controller.Initialisation;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtPackage;
 
+/**
+ * Spoon processor : permet de renommer les packages
+ * @author jvdur
+ *
+ */
 public class ProcessorPackageName extends AbstractProcessor<CtPackage> {
 	
 	@Override
