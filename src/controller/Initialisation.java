@@ -1,16 +1,16 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import dictionary.Model;
-import processor.NameMethodProcessor;
+import processor.ProcessorCtTypeName;
+import processor.ProcessorPackageName;
 import spoon.Launcher;
 import spoon.ModelHandler;
 import spoon.SpoonSingleton;
 import spoon.reflect.declaration.CtPackage;
-import util.FactoryReference;
+import spoon.reflect.declaration.CtType;
 
 public class Initialisation {
 
@@ -18,7 +18,7 @@ public class Initialisation {
 	private String modelDir;
 	private String outputDir;
 
-	private Model model;
+	private static Model model;
 	
 	private Launcher spoonReader;
 	private Launcher spoonEditor;
@@ -49,10 +49,13 @@ public class Initialisation {
 		
 		 
     	// Définition des processeurs
-		NameMethodProcessor nmp = new NameMethodProcessor();
-    	
+		//NameMethodProcessor nmp = new NameMethodProcessor();
+		ProcessorPackageName abp = new ProcessorPackageName();
+		ProcessorCtTypeName abct = new ProcessorCtTypeName();
+		
     	// Association des process a spoon
-		spoonEditor.addProcessor(nmp);
+		spoonEditor.addProcessor(abp);
+		spoonEditor.addProcessor(abct);
 
 		// Application effective du modèle sur le projet cible
 		initProcessors();
@@ -67,7 +70,7 @@ public class Initialisation {
 
 	private void initProcessors() {
 		
-		processPackages();
+		//processPackages();
 		
 		processClasses();
 		
@@ -78,14 +81,14 @@ public class Initialisation {
 	
 	private void processPackages() {
 
-		spoonReader.buildModel();
+		//spoonReader.buildModel();
 		// On ajoute tous les packages
 		ArrayList<CtPackage> ctpl = new ArrayList<>();
 		for (CtPackage ctpR : spoonReader.getFactory().Package().getAll()) {
 			ctpl.add(ctpR);
 		}
 		
-		spoonEditor.buildModel();
+		//spoonEditor.buildModel();
 		List<CtPackage> lPackages = (List<CtPackage>) spoonEditor.getFactory().Package().getAll();
 		for (int i=0 ; i<lPackages.size() ; i++) {
 			CtPackage x = spoonEditor.getFactory().Package().get(lPackages.get(i).getQualifiedName());
@@ -94,7 +97,18 @@ public class Initialisation {
 	}
 	
 	private void processClasses() {
-		// TODO
+		/*ArrayList<CtType> ctty = new ArrayList<>();
+		for (CtType ctty : spoonReader.getFactory().Package().getAllRoots(). getAll()) {
+			ctpl.add(ctpR);
+		}
+		
+		spoonEditor.buildModel();
+		List<CtPackage> lPackages = (List<CtPackage>) spoonEditor.getFactory().Package().getAll();
+		for (int i=0 ; i<lPackages.size() ; i++) {
+			CtPackage x = spoonEditor.getFactory().Package().get(lPackages.get(i).getQualifiedName());
+			x.setSimpleName(ctpl.get(i).getSimpleName());
+		}*/
+
 	}
 	
 	private void processMethodes() {
@@ -103,12 +117,18 @@ public class Initialisation {
 
 	private void Process() {
 		
-		//spoonEditor.process();
+		spoonEditor.process();
+		//spoonEditor.run();
+		//spoonEditor.buildModel();
+		
 		spoonEditor.run();
-		spoonEditor.prettyprint();
 		
 		//spoonEditor.createCompiler().compile();
 		//spoonReader.run();
+	}
+	
+	public static Model getModel() {
+		return model;
 	}
 	
 }

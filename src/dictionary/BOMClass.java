@@ -14,6 +14,7 @@ public class BOMClass {
 	protected int nbComments;
 	protected int nbConstant;
 	protected int nbMethods;
+	public boolean istaken = false;
 	
 	
 	public BOMClass(Model model, BOMPackages parent, String name) {
@@ -72,6 +73,10 @@ public class BOMClass {
 
 	public ArrayList<BOMConstant> getConstants() {
 		return constants;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 }

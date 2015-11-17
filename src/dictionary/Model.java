@@ -2,6 +2,8 @@ package dictionary;
 
 import java.util.ArrayList;
 
+import controller.Initialisation;
+
 public class Model {
 
 	private ArrayList<BOMPackages> model;
@@ -12,8 +14,10 @@ public class Model {
 	protected int nbMethods;
 	protected int nbComments;
 	
+	/**
+	 * Consructor
+	 */
 	public Model() {
-	
 		this.model = new ArrayList<>();
 		
 		this.nbAttribute = 0;
@@ -60,6 +64,61 @@ public class Model {
 
 	public int getNbComments() {
 		return nbComments;
+	}
+	
+	public String getMeADamnPackageName(BOMPackages pack) {
+		
+		if (pack == null){
+			
+			for (BOMPackages bomPackages : model) {
+				// on regarde si on prends le nom
+				if (!bomPackages.isTaken) {
+					bomPackages.isTaken = true;
+					return bomPackages.getName();
+				}
+				// sinon on introspectionise
+				if (!bomPackages.getPackages().isEmpty()) {
+					String in = getMeADamnPackageName(bomPackages);
+					if (in != null) {
+						return in;
+					}
+				}
+			}
+			return null;
+		} else {
+				// on regarde si on prends le nom
+				if (!pack.isTaken) {
+					pack.isTaken = true;
+					return pack.getName();
+				}
+				// sinon on introspectionise
+				if (!pack.getPackages().isEmpty()) {
+					String in = getMeADamnPackageName(pack);
+					if (in != null) {
+						return in;
+					}
+				}
+			
+			return null;
+		}
+		
+		
+	}
+
+	public String getMeADamnTypeName(BOMPackages pack) {
+		if (pack ==null) {
+			
+			for (BOMPackages bomPackages : model) {
+				for(BOMClass bomclass : bomPackages.getClasses()) {
+					if (!bomclass.istaken) {
+						bomclass.istaken = true;
+						return bomclass.getName();
+					}
+				}
+			}
+			return null;
+		}
+		return null;
 	}
 	
 }

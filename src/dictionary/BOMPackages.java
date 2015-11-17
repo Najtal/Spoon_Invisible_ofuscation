@@ -15,6 +15,7 @@ public class BOMPackages {
 	protected int nbComments;
 	protected int nbConstant;
 	protected int nbMethods;
+	public boolean isTaken = false;
 	
 	public BOMPackages(Model model, BOMPackages parent, String name) {
 		this.classes = new ArrayList<>();
