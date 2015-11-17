@@ -58,9 +58,7 @@ public class Initialisation {
 		spoonEditor.addProcessor(abct);
 
 		// Application effective du modèle sur le projet cible
-		initProcessors();
 		Process();
-	
 	}
 
 
@@ -68,63 +66,9 @@ public class Initialisation {
 		this.model = new ModelHandler(spoonReader).getModelFromSpoon();
 	}
 
-	private void initProcessors() {
-		
-		//processPackages();
-		
-		processClasses();
-		
-		processMethodes();
-		
-	}
-	
-	
-	private void processPackages() {
-
-		//spoonReader.buildModel();
-		// On ajoute tous les packages
-		ArrayList<CtPackage> ctpl = new ArrayList<>();
-		for (CtPackage ctpR : spoonReader.getFactory().Package().getAll()) {
-			ctpl.add(ctpR);
-		}
-		
-		//spoonEditor.buildModel();
-		List<CtPackage> lPackages = (List<CtPackage>) spoonEditor.getFactory().Package().getAll();
-		for (int i=0 ; i<lPackages.size() ; i++) {
-			CtPackage x = spoonEditor.getFactory().Package().get(lPackages.get(i).getQualifiedName());
-			x.setSimpleName(ctpl.get(i).getSimpleName());
-		}
-	}
-	
-	private void processClasses() {
-		/*ArrayList<CtType> ctty = new ArrayList<>();
-		for (CtType ctty : spoonReader.getFactory().Package().getAllRoots(). getAll()) {
-			ctpl.add(ctpR);
-		}
-		
-		spoonEditor.buildModel();
-		List<CtPackage> lPackages = (List<CtPackage>) spoonEditor.getFactory().Package().getAll();
-		for (int i=0 ; i<lPackages.size() ; i++) {
-			CtPackage x = spoonEditor.getFactory().Package().get(lPackages.get(i).getQualifiedName());
-			x.setSimpleName(ctpl.get(i).getSimpleName());
-		}*/
-
-	}
-	
-	private void processMethodes() {
-		// TODO
-	}
-
 	private void Process() {
-		
 		spoonEditor.process();
-		//spoonEditor.run();
-		//spoonEditor.buildModel();
-		
 		spoonEditor.run();
-		
-		//spoonEditor.createCompiler().compile();
-		//spoonReader.run();
 	}
 	
 	public static Model getModel() {
